@@ -27,7 +27,11 @@ function init(config) {
 
                 if (parsed.character && parsed.date && parsed.hour && parsed.event && parsed.message) {
                     await Axios.post(config.API_URL, {
-                        ...parsed
+                        ...parsed,
+                        metadata: {
+                            author_discord_id: message.author.id,
+                            action_date: new Date(),
+                        },
                     }).then(() => {
                         message.react('✔');
                     }).catch(err => {
