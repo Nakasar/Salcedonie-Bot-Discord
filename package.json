@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/app.js"
   },
   "author": "Kevin 'Naksar' Thizy",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "discord.js": "^11.4.2"
   }
 }
