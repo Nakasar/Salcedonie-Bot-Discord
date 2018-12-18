@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/app.js"
+    "start": "node ./bin/app.js",
+    "watch": "nodemon ./bin/app.js"
   },
   "author": "Kevin 'Naksar' Thizy",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "discord.js": "^11.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }

@@ -28,25 +28,29 @@ function init(config) {
                 if (parsed.character && parsed.date && parsed.hour && parsed.event && parsed.message) {
                     await Axios.post(config.API_URL, {
                         ...parsed
+                    }).then(() => {
+                        message.react('✔');
                     }).catch(err => {
                         console.error('An error occurred with API when posting event data.');
                         console.error(err);
-                        throw err;
-                    });
 
-                    message.react('✔');
+                        message.react('❌');
+                        message.author.send("Le message n'a pas pu être sauvegardé car le Bot n'a pas pu contacter le serveur.");
+                    });
                 } else {
                     message.react('❌');
+                    message.author.send("Le message n'a pas pu être traité car il n'est pas dans un format accepté: `[personnage, date, heure, event] message`\nPour réessayer, envoyez un nouveau message corrigé.");
                 }
             } catch (err) {
                 message.react('❌');
+                message.author.send("Le message n'a pas pu être traité car il n'est pas dans un format accepté: `[personnage, date, heure, event] message`\nPour réessayer, envoyez un nouveau message corrigé.");
             }
 
             return;
         }
 
         if (message.content.startsWith('!rp')) {
-            message.channel.send("Je n'ai pas compris.");
+            message.channel.send('Retrouvez la timeline et les messages passés sur le site https://salcedonie.nakasar.me');
         }
     });
 
